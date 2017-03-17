@@ -14,6 +14,7 @@ namespace Study.Console
             try
             {
 
+
                 List<Task> tasks = new List<Task>();
 
                 CL.Log("before cycle");

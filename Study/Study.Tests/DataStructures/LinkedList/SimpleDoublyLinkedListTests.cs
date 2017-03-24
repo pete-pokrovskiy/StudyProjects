@@ -1,17 +1,25 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
 using Study.DataStructures;
 
 namespace Study.Tests.DataStructures.LinkedList
 {
+    /// <summary>
+    /// Можно взять те же самые тесты, которы использовались для односвязного списка, только заменив тип списка
+    /// </summary>
     [TestFixture]
-    public class SimpleLinkedListTests
+    public class SimpleDoublyLinkedListTests
     {
         #region AddFirst
 
         [Test]
         public void AddFirstTestHead()
         {
-            SimpleLinkedList<int> linkedList = new SimpleLinkedList<int>();
+            SimpleDoublyLinkedList<int> linkedList = new SimpleDoublyLinkedList<int>();
 
             linkedList.AddFirst(5);
             linkedList.AddFirst(4);
@@ -19,13 +27,13 @@ namespace Study.Tests.DataStructures.LinkedList
             linkedList.AddFirst(2);
             linkedList.AddFirst(1);
             Assert.AreEqual(1, linkedList.Head.Value);
-            
+
         }
 
         [Test]
         public void AddFirstTestTail()
         {
-            SimpleLinkedList<int> linkedList = new SimpleLinkedList<int>();
+            SimpleDoublyLinkedList<int> linkedList = new SimpleDoublyLinkedList<int>();
 
             linkedList.AddFirst(5);
             linkedList.AddFirst(4);
@@ -38,7 +46,7 @@ namespace Study.Tests.DataStructures.LinkedList
         [Test]
         public void AddFirstTestCount()
         {
-            SimpleLinkedList<int> linkedList = new SimpleLinkedList<int>();
+            SimpleDoublyLinkedList<int> linkedList = new SimpleDoublyLinkedList<int>();
 
             linkedList.AddFirst(5);
             linkedList.AddFirst(4);
@@ -55,7 +63,7 @@ namespace Study.Tests.DataStructures.LinkedList
         [Test]
         public void AddLastTestHead()
         {
-            SimpleLinkedList<int> linkedList = new SimpleLinkedList<int>();
+            SimpleDoublyLinkedList<int> linkedList = new SimpleDoublyLinkedList<int>();
 
             linkedList.AddLast(1);
             linkedList.AddLast(2);
@@ -68,7 +76,7 @@ namespace Study.Tests.DataStructures.LinkedList
         [Test]
         public void AddLastTestTail()
         {
-            SimpleLinkedList<int> linkedList = new SimpleLinkedList<int>();
+            SimpleDoublyLinkedList<int> linkedList = new SimpleDoublyLinkedList<int>();
 
             linkedList.AddLast(1);
             linkedList.AddLast(2);
@@ -80,7 +88,7 @@ namespace Study.Tests.DataStructures.LinkedList
         [Test]
         public void AddLastTestCount()
         {
-            SimpleLinkedList<int> linkedList = new SimpleLinkedList<int>();
+            SimpleDoublyLinkedList<int> linkedList = new SimpleDoublyLinkedList<int>();
 
             linkedList.AddLast(1);
             linkedList.AddLast(2);
@@ -98,12 +106,12 @@ namespace Study.Tests.DataStructures.LinkedList
         public void RemoveFirstTestOneNode()
         {
             //arrange
-            var sut = new SimpleLinkedList<int>();
+            var sut = new SimpleDoublyLinkedList<int>();
 
             //act
             sut.AddFirst(4);
             sut.RemoveFirst();
-            
+
             //assert
             Assert.That(sut.Tail, Is.Null);
 
@@ -112,7 +120,7 @@ namespace Study.Tests.DataStructures.LinkedList
         [Test]
         public void RemoveFirstTestSecond()
         {
-            var sut = new SimpleLinkedList<int>();
+            var sut = new SimpleDoublyLinkedList<int>();
 
             sut.AddFirst(1);
             sut.AddFirst(2);
@@ -130,7 +138,7 @@ namespace Study.Tests.DataStructures.LinkedList
         public void RemoveLastTestHead()
         {
             //arrange
-            var sut = new SimpleLinkedList<int>();
+            var sut = new SimpleDoublyLinkedList<int>();
 
             //act
             sut.AddFirst(1);

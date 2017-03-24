@@ -55,6 +55,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataStructures\LinkedList\SimpleDoublyLinkedListTests.cs" />
     <Compile Include="DataStructures\LinkedList\SimpleLinkedListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

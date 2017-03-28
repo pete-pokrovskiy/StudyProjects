@@ -125,7 +125,7 @@ namespace Study.Tests.DataStructures.LinkedList
         }
         #endregion
 
-        #region RemodeLast
+        #region RemoveLast
         [Test]
         public void RemoveLastTestHead()
         {
@@ -145,5 +145,45 @@ namespace Study.Tests.DataStructures.LinkedList
             Assert.That(sut.Tail.Value, Is.EqualTo(0));
         }
         #endregion
+
+
+        #region Contains
+        [Test]
+        public void ContaintsTestTrue()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            //act
+            sut.AddFirst(3);
+            sut.AddFirst(2);
+            sut.AddFirst(10);
+            sut.AddFirst(100);
+            sut.AddFirst(4);
+            sut.AddFirst(12);
+            sut.AddFirst(456);
+
+            //assert
+            Assert.That(sut.Contains(100), Is.True);
+        }
+
+        [Test]
+        public void ContainsTestFalse()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            //act
+            sut.AddFirst(3);
+            sut.AddFirst(2);
+            sut.AddFirst(10);
+            sut.AddFirst(100);
+            sut.AddFirst(4);
+            sut.AddFirst(12);
+            sut.AddFirst(456);
+            //assert
+            Assert.That(sut.Contains(101), Is.False);
+        }
+#endregion
     }
 }

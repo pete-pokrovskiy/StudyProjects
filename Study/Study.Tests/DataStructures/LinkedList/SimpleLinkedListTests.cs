@@ -1,5 +1,8 @@
-﻿using NUnit.Framework;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Study.DataStructures;
+using Assert = NUnit.Framework.Assert;
 
 namespace Study.Tests.DataStructures.LinkedList
 {
@@ -145,8 +148,7 @@ namespace Study.Tests.DataStructures.LinkedList
             Assert.That(sut.Tail.Value, Is.EqualTo(0));
         }
         #endregion
-
-
+        
         #region Contains
         [Test]
         public void ContaintsTestTrue()
@@ -184,6 +186,177 @@ namespace Study.Tests.DataStructures.LinkedList
             //assert
             Assert.That(sut.Contains(101), Is.False);
         }
+        #endregion
+
+        #region Remove
+
+        [Test]
+        public void RemoveTestDistinctFirst()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            sut.AddFirst(5);
+            sut.AddFirst(4);
+            sut.AddFirst(3);
+            sut.AddFirst(2);
+            sut.AddFirst(1);
+
+            //act
+            sut.Remove(1);
+
+            //assert
+            Assert.That(sut.Head.Value, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void RemoveTestDistinctLast()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            sut.AddFirst(5);
+            sut.AddFirst(4);
+            sut.AddFirst(3);
+            sut.AddFirst(2);
+            sut.AddFirst(1);
+
+            //act
+            sut.Remove(5);
+
+            //assert
+            Assert.That(sut.Tail.Value, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void RemoveTestDistinctMiddle()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            sut.AddFirst(7);
+            sut.AddFirst(6);
+            sut.AddFirst(5);
+            sut.AddFirst(4);
+            sut.AddFirst(3);
+            sut.AddFirst(2);
+            sut.AddFirst(1);
+
+            //act
+            sut.Remove(4);
+
+            //assert
+            Assert.That(sut.Count, Is.EqualTo(6));
+        }
+
+        [Test]
+        public void RemoveTestNotDistinctCheckFirst()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            sut.AddFirst(7);
+            sut.AddFirst(6);
+            sut.AddFirst(1);
+            sut.AddFirst(5);
+            sut.AddFirst(1);
+            sut.AddFirst(1);
+            sut.AddFirst(7);
+            sut.AddFirst(4);
+            sut.AddFirst(3);
+            sut.AddFirst(7);
+            sut.AddFirst(2);
+            sut.AddFirst(1);
+            sut.AddFirst(2);
+
+            //act
+            sut.Remove(2);
+
+            //assert
+            Assert.That(sut.Head.Value, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void RemoveTestNotDistinctCheckLast()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            sut.AddFirst(7);
+            sut.AddFirst(7);
+            sut.AddFirst(6);
+            sut.AddFirst(1);
+            sut.AddFirst(5);
+            sut.AddFirst(1);
+            sut.AddFirst(1);
+            sut.AddFirst(7);
+            sut.AddFirst(4);
+            sut.AddFirst(3);
+            sut.AddFirst(7);
+            sut.AddFirst(2);
+            sut.AddFirst(1);
+            sut.AddFirst(2);
+
+            //act
+            sut.Remove(7);
+
+            //assert
+            Assert.That(sut.Tail.Value, Is.EqualTo(6));
+        }
+
+        [Test]
+        public void RemoveTestNotDistinctCheckCount()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            sut.AddFirst(7);
+            sut.AddFirst(7);
+            sut.AddFirst(6);
+            sut.AddFirst(1);
+            sut.AddFirst(5);
+            sut.AddFirst(1);
+            sut.AddFirst(1);
+            sut.AddFirst(7);
+            sut.AddFirst(4);
+            sut.AddFirst(3);
+            sut.AddFirst(7);
+            sut.AddFirst(2);
+            sut.AddFirst(1);
+            sut.AddFirst(2);
+
+            //act
+            sut.Remove(7);
+
+            //assert
+            Assert.That(sut.Count, Is.EqualTo(10));
+        }
+        #endregion
+
+        #region CopyTo
+
+        [Test]
+        public void CopyToTest()
+        {
+            //arrange
+            var sut = new SimpleLinkedList<int>();
+
+            sut.AddFirst(7);
+            sut.AddFirst(6);
+            sut.AddFirst(5);
+            sut.AddFirst(4);
+            sut.AddFirst(3);
+            sut.AddFirst(2);
+            sut.AddFirst(1);
+
+            //act          
+            int[] array = new int[5];
+
+            
+            //assert
+            Assert.That(() => sut.CopyTo(array, 0), Throws.TypeOf<IndexOutOfRangeException>());
+        }
+
 #endregion
     }
 }

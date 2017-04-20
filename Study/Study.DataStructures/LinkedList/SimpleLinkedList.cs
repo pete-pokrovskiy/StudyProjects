@@ -112,7 +112,7 @@ namespace Study.DataStructures
 
         }
 
-        public bool Remove(T item)
+        public bool Remove(T valueToDelete)
         {
             if (Count == 0)
                 return false;
@@ -123,26 +123,27 @@ namespace Study.DataStructures
 
             while (currentNode != null)
             {
-                if (currentNode.Value.Equals(item))
-                {
-                    //первый элемент
-                    if (previousNode == null)
-                    {
-                        RemoveFirst();
-                    }
-                    else
-                    {
-                        previousNode.Next = currentNode.Next;
-                    }
-                }
+                if(currentNode == Head &&  currentNode.Value.Equals(valueToDelete))
+                    RemoveFirst();
 
-                
+               else if (currentNode == Tail && currentNode.Value.Equals(valueToDelete))
+               {
+                   RemoveLast();
+                   currentNode = null;
+                   continue;
+               }
+               else if (currentNode.Value.Equals(valueToDelete))
+               {
+                   previousNode.Next = currentNode.Next;
+                   Count--;
+               }
+
+                previousNode = currentNode;
                 currentNode = currentNode.Next;
-                
             }
-            
 
-            throw new NotImplementedException();
+            return true;
+
         }
 
         public int Count { get; set; }
@@ -179,7 +180,17 @@ namespace Study.DataStructures
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            
+            SimpleLinkedListNode<T> currentNode = Head;
+
+            while (currentNode != null)
+            {
+                array[arrayIndex] = currentNode.Value;
+
+                arrayIndex++;
+
+                currentNode = currentNode.Next;
+            }
+
         }
 
         public IEnumerator<T> GetEnumerator()

@@ -11,9 +11,6 @@ namespace Study.Console
 
         public async Task RunTasksInCycle()
         {
-            try
-            {
-
 
                 List<Task> tasks = new List<Task>();
 
@@ -28,11 +25,7 @@ namespace Study.Console
                 await Task.WhenAll(tasks);
 
                 CL.Log("after await");
-            }
-            catch (Exception ex)
-            {
-                
-            }
+
         }
 
 

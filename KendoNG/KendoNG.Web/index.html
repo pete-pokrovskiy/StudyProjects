@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>KendoNg</title>
+    <meta charset="utf-8"/>
+
+    <link href="Content/bootstrap.css" rel="stylesheet"/>
+    <style>
+        body {
+            margin: 4em 0 0 1em;
+        }
+    </style>
+</head>
+<body>
+<h2>Kendo UI & Angualr JS</h2>
+<div ng-include="'src/layout/topnav.html'"></div>
+<div>
+    <div ng-view></div>
+</div>
+
+<!--vendor files--> 
+<script src="Scripts/jquery-1.9.1.min.js"></script>
+<script src="Scripts/angular.js"></script>
+<script src="Scripts/angular-route.js"></script>
+<script src="Scripts/kendo.all.min.js"></script>
+<script src="Scripts/kendo.angular.min.js"></script>
+
+
+<!--my scripts-->
+<script src="src/app.js"></script>
+<script src="src/welcome/welcome.js"></script>
+
+</body>
+</html>

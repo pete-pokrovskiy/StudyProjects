@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStartedEF6.DataModel", "GettingStartedEF6.DataModel\GettingStartedEF6.DataModel.csproj", "{034FFBB9-41B9-43E2-832E-8EA2474C5C6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStartedEF6.Domain", "GettingStartedEF6.Domain\GettingStartedEF6.Domain.csproj", "{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{034FFBB9-41B9-43E2-832E-8EA2474C5C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034FFBB9-41B9-43E2-832E-8EA2474C5C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034FFBB9-41B9-43E2-832E-8EA2474C5C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034FFBB9-41B9-43E2-832E-8EA2474C5C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="readme.txt" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -110,6 +111,10 @@
     <Content Include="src\layout\topnav.html" />
     <Content Include="src\welcome\welcome.html" />
     <Content Include="src\welcome\welcome.js" />
+    <Content Include="src\welcome\welcome2.html" />
+    <Content Include="src\welcome\welcome2.js" />
+    <Content Include="src\welcome\welcome3.html" />
+    <Content Include="src\welcome\welcome3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

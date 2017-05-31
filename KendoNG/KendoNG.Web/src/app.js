@@ -10,6 +10,8 @@
     app.config(['$routeProvider', function($routeProvider) {
             $routeProvider
                 .when('/', { templateUrl: 'src/welcome/welcome.html' })
+                .when('/welcome2', { templateUrl: 'src/welcome/welcome2.html' })
+                .when('/welcome3', { templateUrl: 'src/welcome/welcome3.html' })
                 .otherwise({ redirectTo: '/' });
         }]
         );

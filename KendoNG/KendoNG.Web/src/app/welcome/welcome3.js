@@ -1,12 +1,16 @@
 ﻿(function () {
 
-    angular.module('app').controller('welcome2', [welcome]);
+    angular.module('app').controller('welcome3', [welcome3]);
 
-    function welcome() {
-
+    function welcome3() {
+        
         var vm = this;
 
         vm.activate = activate;
+        vm.computerChosen = false;
+
+        vm.selectedComputer = '';
+
 
         activate();
 
@@ -33,6 +37,17 @@
                 dataValueField: 'id',
                 optionLabel: 'Select a computer...'
             };
+
+            vm.computerChange = function(e) {
+                console.log(e.sender.text());
+                vm.computerChosen = true;
+
+                if (e.sender.text() === 'Select a computer...') {
+                    vm.computerChosen = false;
+                }
+
+            };
+
 
 
             vm.computers = [

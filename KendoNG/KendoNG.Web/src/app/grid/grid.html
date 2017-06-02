@@ -1,0 +1,38 @@
+﻿<h1>Grid here!</h1>
+<h5>{{message}}</h5>
+
+<!--В гриде нужны:
+- текст
+- число (целое + float)
+- дата
+- выпадающий список
+- ссылка
+- картинка + текст-->
+
+<kendo-grid options="testGridOptions">
+    <!--Row Template-->
+
+    <table>
+        <tr k-row-template data-uid="#: uid #">
+            <td>
+                <b>#: resource #</b>
+            </td>
+            <!--td><h5>#: status #</h5></td>-->
+            <td>
+                <h6>#: status.name #</h6>
+                <select kendo-drop-down-list
+                        k-options="statusOptions"
+                        k-ng-model="dataItem.status"
+                        k-on-change="dataItem.changeDropDown(kendoEvent)"></select>
+                <h3>{{dataItem.status.id}}</h3>
+            </td>
+            <td><a href="http://google.com">#: timesheetLink#</a></td>
+            <td><h4>#= kendo.toString(kendo.parseDate(startDate, 'yyyy-MM-dd'), 'MM/dd/yyyy') #</h4></td>
+            <td>#: count #</td>
+        </tr>
+    </table>
+</kendo-grid>
+
+<div>
+    <input type="button" ng-click="showDataStatuses()" value="Show statuses"/>
+</div>

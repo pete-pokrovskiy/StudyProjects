@@ -68,7 +68,14 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="readme.txt" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="src\app\main\main.html" />
+    <Content Include="src\app\mine\mine.html" />
+    <Content Include="src\app\mine\mine.js" />
+    <Content Include="src\app\modal\kendo_tutorial_modal.html" />
+    <Content Include="src\app\modal\modal.html" />
+    <Content Include="src\app\grid\grid.html" />
+    <Content Include="src\app\grid\grid.js" />
+    <Content Include="src\Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -77,44 +84,44 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="index.html" />
-    <Content Include="Scripts\angular-kendo.js" />
-    <Content Include="Scripts\angular-kendo.min.js" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\kendo.all.min.js" />
-    <Content Include="Scripts\kendo.angular.min.js" />
-    <Content Include="src\app.js" />
-    <Content Include="src\layout\topnav.html" />
-    <Content Include="src\welcome\welcome.html" />
-    <Content Include="src\welcome\welcome.js" />
-    <Content Include="src\welcome\welcome2.html" />
-    <Content Include="src\welcome\welcome2.js" />
-    <Content Include="src\welcome\welcome3.html" />
-    <Content Include="src\welcome\welcome3.js" />
+    <Content Include="src\Content\bootstrap-theme.css" />
+    <Content Include="src\Content\bootstrap-theme.min.css" />
+    <Content Include="src\Content\bootstrap.css" />
+    <Content Include="src\Content\bootstrap.min.css" />
+    <Content Include="src\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="src\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="src\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="src\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="src\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="src\Content\bootstrap.min.css.map" />
+    <Content Include="src\Content\bootstrap.css.map" />
+    <Content Include="src\Content\bootstrap-theme.min.css.map" />
+    <Content Include="src\Content\bootstrap-theme.css.map" />
+    <Content Include="src\index.html" />
+    <Content Include="src\Scripts\angular-kendo.js" />
+    <Content Include="src\Scripts\angular-kendo.min.js" />
+    <Content Include="src\Scripts\angular-mocks.js" />
+    <Content Include="src\Scripts\angular-route.js" />
+    <Content Include="src\Scripts\angular-route.min.js" />
+    <Content Include="src\Scripts\angular.js" />
+    <Content Include="src\Scripts\angular.min.js" />
+    <Content Include="src\Scripts\angular.min.js.map" />
+    <Content Include="src\Scripts\angular-route.min.js.map" />
+    <None Include="src\Scripts\jquery-1.9.1-vsdoc.js" />
+    <Content Include="src\Scripts\bootstrap.js" />
+    <Content Include="src\Scripts\bootstrap.min.js" />
+    <Content Include="src\Scripts\jquery-1.9.1.js" />
+    <Content Include="src\Scripts\jquery-1.9.1.min.js" />
+    <Content Include="src\Scripts\kendo.all.min.js" />
+    <Content Include="src\Scripts\kendo.angular.min.js" />
+    <Content Include="src\app\app.js" />
+    <Content Include="src\app\layout\topnav.html" />
+    <Content Include="src\app\welcome\welcome.html" />
+    <Content Include="src\app\welcome\welcome.js" />
+    <Content Include="src\app\welcome\welcome2.html" />
+    <Content Include="src\app\welcome\welcome2.js" />
+    <Content Include="src\app\welcome\welcome3.html" />
+    <Content Include="src\app\welcome\welcome3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

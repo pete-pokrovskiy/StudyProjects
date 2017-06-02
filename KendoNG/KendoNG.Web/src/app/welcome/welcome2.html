@@ -1,0 +1,17 @@
+﻿<h2> Welcome  from welcome2.html</h2>
+
+<div ng-controller="welcome2 as vm">
+
+
+    <select kendo-drop-down-list
+            k-options="vm.computerOptions" k-ng-model="vm.selected_computer"></select>
+
+
+
+    <div>
+        <label>Selected comp from scope: </label>
+        <span>{{vm.selected_computer.name}}</span>
+    </div>
+
+
+</div>

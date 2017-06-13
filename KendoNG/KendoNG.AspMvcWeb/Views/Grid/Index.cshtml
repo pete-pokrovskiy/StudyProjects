@@ -1,0 +1,31 @@
+﻿<html ng-app="app">
+<head >
+    <title>Playing with kendo grid</title>
+    <link href="~/Content/kendo.common.min.css" rel="stylesheet"/>
+    <link href="~/Content/kendo.blueopal.min.css" rel="stylesheet"/>
+</head>
+<body ng-controller="GridController">
+
+<div>
+    <label>Группировать по: </label>
+    <input type="radio" name="grouping" id="groupByActivity" ng-model="groupingOption" ng-change="updateGrouping()" value="project"/>
+    <label for="groupByActivity">проекту</label>
+
+    <input type="radio" name="grouping" id="groupByResource"  ng-model="groupingOption" ng-change="updateGrouping()"  value="resource"/>
+    <label for="groupByActivity">сотруднику</label>
+</div>
+<kendo-grid options="gridOptions">
+
+</kendo-grid>
+
+
+<script src="~/scripts/jquery.min.js"></script>
+<script src="~/scripts/angular.min.js"></script>
+<script src="~/scripts/kendo.all.min.js"></script>
+
+
+<script src="~/scripts/app/app.js"></script>
+<script src="~/scripts/app/GridController.js"></script>
+    <script src="~/scripts/app/GridData.js"></script>
+</body>
+</html>

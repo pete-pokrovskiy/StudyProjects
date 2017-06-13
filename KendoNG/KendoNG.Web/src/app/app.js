@@ -23,7 +23,11 @@
             .when('/grid', {
                 templateUrl: 'app/grid/grid.html',
                 controller: 'GridController'
-                })
+            })
+            .when('/dataSource', {
+                templateUrl: 'app/dataSource/dataSource.html'
+            })
+            .when('/globalEvents', { templateUrl: 'app/globalEvents/globalEvents.html', controller: 'GlobalEventsController' })
             .otherwise({ redirectTo: '/' });
     });
 

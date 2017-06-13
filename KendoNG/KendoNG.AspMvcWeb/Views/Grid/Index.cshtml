@@ -13,6 +13,8 @@
 
     <input type="radio" name="grouping" id="groupByResource"  ng-model="groupingOption" ng-change="updateGrouping()"  value="resource"/>
     <label for="groupByActivity">сотруднику</label>
+    <label for="showOnlyOpenItems">Показывать только открытые записи:</label>
+    <input id="showOnlyOpenItems"  type="checkbox" ng-model="showOnlyOpenItems" ng-change="showOnlyOpenItemsOnChange()"/>
 </div>
 <kendo-grid options="gridOptions">
 

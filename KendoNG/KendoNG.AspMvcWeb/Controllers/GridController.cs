@@ -9,7 +9,6 @@ namespace KendoNG.AspMvcWeb.Controllers
 {
     public class GridController : Controller
     {
-        
         public ActionResult Index()
         {
             return View();
@@ -18,7 +17,6 @@ namespace KendoNG.AspMvcWeb.Controllers
 
         public ActionResult GetActionItems()
         {
-
             var viewModels = new List<ActionItemViewModel>
             {
                 new ActionItemViewModel()
@@ -27,6 +25,7 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ActivityCode = "proj1",
                     ResourceName = "Иванов Иван",
                     ResourceUniqueName = "iivanov",
+                    OldStatus = 1,
                     NewStatus = 1,
                     TimesheetLink = "www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
@@ -43,6 +42,7 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ActivityCode = "proj2",
                     ResourceName = "Иванов Иван",
                     ResourceUniqueName = "iivanov",
+                    OldStatus = 1,
                     NewStatus = 1,
                     TimesheetLink = "www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
@@ -59,6 +59,7 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ActivityCode = "proj1",
                     ResourceName = "Федоров Федор",
                     ResourceUniqueName = "ffedorov",
+                    OldStatus = 2,
                     NewStatus = 1,
                     TimesheetLink = "www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
@@ -75,6 +76,7 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ActivityCode = "proj2",
                     ResourceName = "Федоров Федор",
                     ResourceUniqueName = "ffedorov",
+                    OldStatus = 2,
                     NewStatus = 1,
                     TimesheetLink = "www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
@@ -107,6 +109,7 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ActivityCode = "proj4",
                     ResourceName = "Федоров Федор",
                     ResourceUniqueName = "ffedorov",
+                    OldStatus = 1,
                     NewStatus = 1,
                     TimesheetLink = "www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),

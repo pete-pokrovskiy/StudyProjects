@@ -7,6 +7,18 @@
 
         $scope.message = "Testing Grid";
 
+        //флаг - показывать ли только открытые action item-ы
+        $scope.showOnlyOpenItems = false;
+
+        //фильтруем записи в гриде
+        $scope.showOnlyOpenItemsOnChange = function() {
+            if ($scope.showOnlyOpenItems) {
+                $scope.gridDataSource.filter({ field: "OldStatus", operator: "eq", value: 1 });
+            } else {
+                $scope.gridDataSource.filter({});
+            }
+
+        };
 
         $scope.groupingOption = "project";
 
@@ -33,7 +45,8 @@
             group: [{ field: "ActivityCode" }]
         });
 
-        $scope.getActivityName = function (code) {
+        //группируем по коду проекта, но нужно отображать его имя
+        $scope.getActivityName = function(code) {
 
             var collection = $scope.gridDataSource.view();
 
@@ -44,26 +57,23 @@
             return "name not found";
         };
 
+        //группируем по идентификатору ресурса, но нужно отображать его имя
+        $scope.getResourceName = function(resourceUniqueName) {
+            var collection = $scope.gridDataSource.view();
+
+            for (var i = 0; i < collection.length; i++) {
+                if (collection[i].value === resourceUniqueName)
+                    return collection[i].items[0].ResourceName;
+            }
+            return "name not found";
+        }
+
 
         $scope.gridOptions = {
-            dataSource: $scope.gridDataSource
-            //    {
-            //    pageSize: 5,
-            //    transport:{
-            //        read: function(e) {
-            //            gridData.getActionItems().then(function(records) {
-            //                e.success(records);
-            //            }, function(error) {
-            //                alert(error);
-            //            });
-            //        }
-            //    },
-            //    //group: [{ field: "ActivityCode" }]
-            //}
-            ,
+            dataSource: $scope.gridDataSource,
             sortable: true,
             columns: [
-                { field: "ResourceUniqueName", hidden: true, groupHeaderTemplate: "#=value#" },
+                { field: "ResourceUniqueName", hidden: true, groupHeaderTemplate: "{{getResourceName('#=value#')}}" },
                 { field: "ActivityName", hidden: true },
                 { field: "ActivityCode", hidden: true, groupHeaderTemplate: "{{getActivityName('#=value#')}}" },
                 { field: "ResourceName", title: "Сотрудник" },

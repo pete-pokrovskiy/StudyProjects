@@ -13,7 +13,7 @@
         //фильтруем записи в гриде
         $scope.showOnlyOpenItemsOnChange = function() {
             if ($scope.showOnlyOpenItems) {
-                $scope.gridDataSource.filter({ field: "OldStatus", operator: "eq", value: 1 });
+                $scope.gridDataSource.filter({ field: "OldStatus.Id", operator: "eq", value: 1 });
             } else {
                 $scope.gridDataSource.filter({});
             }
@@ -89,6 +89,31 @@
             ]
 
         };
+
+
+        $scope.statuses = [
+            {
+                Name: 'Открыто',
+                Id: 1
+            },
+            {
+                Name: 'Утверждено',
+                Id: 2
+            },
+            {
+                Name: 'Завершено',
+                Id: 3
+            }
+        ];
+
+        $scope.statusOptions = {
+            dataSource: {
+                data: $scope.statuses
+            },
+            dataTextField: "Name",
+            dataValueField: "Id"
+        };
+
 
     };
 

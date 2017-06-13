@@ -9,8 +9,8 @@ namespace KendoNG.AspMvcWeb.ViewModels
         public string ResourceName { get; set; }
         public string ResourceUniqueName { get; set; }
         public string TimesheetLink { get; set; }
-        public int OldStatus { get; set; }
-        public int NewStatus { get; set; }
+        public ActionItemStatusViewModel OldStatus { get; set; }
+        public ActionItemStatusViewModel NewStatus { get; set; }
         public DateTime PeriodBegin { get; set; }
         public DateTime PeriodEnd { get; set; }
         public decimal ActualsSum { get; set; }
@@ -18,5 +18,11 @@ namespace KendoNG.AspMvcWeb.ViewModels
         public decimal Variance { get; set; }
         public bool HasTaskComments { get; set; }
         public bool HasTimesheetComments { get; set; }
+    }
+
+    public class ActionItemStatusViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -17,7 +17,31 @@
     <input id="showOnlyOpenItems"  type="checkbox" ng-model="showOnlyOpenItems" ng-change="showOnlyOpenItemsOnChange()"/>
 </div>
 <kendo-grid options="gridOptions">
+    <!--Row Template-->
 
+    <table>
+        <tr k-row-template data-uid="#: uid #">
+            <td></td>
+            <td>
+                <b>#: ResourceName #</b>
+            </td>
+            <td>
+                <h6>#: NewStatus.Name #</h6>
+                <select kendo-drop-down-list
+                        k-options="statusOptions"
+                        k-ng-model="dataItem.NewStatus"></select>
+                <h3>{{dataItem.NewStatus.Id}}</h3>
+            </td>
+            <td><a href="'{{dataItem.TimesheetLink}}'">Просмотр</a></td>
+            <td>#= kendo.toString(kendo.parseDate(PeriodBegin, 'yyyy-MM-dd'), 'MM/dd/yyyy') #</td>
+            <td>#= kendo.toString(kendo.parseDate(PeriodEnd, 'yyyy-MM-dd'), 'MM/dd/yyyy') #</td>
+            <td>#: ActualsSum #</td>
+            <td>#: PlanSum #</td>
+            <td>#: Variance #</td>
+            <td>#: HasTaskComments#</td>
+            <td>#:HasTimesheetComments#</td>
+        </tr>
+    </table>
 </kendo-grid>
 
 

@@ -115,6 +115,42 @@
         };
 
 
+        var onPostActionItemsCompleted = function(result) {
+            console.log(result);
+        };
+
+        var onError = function(reason) {
+            console.log(reason);
+        };
+
+        $scope.postActionItems = function() {
+
+            $scope.gridOptions.columns[3].hidden = true;
+            $scope.gridOptions.columns[1].hidden = false;
+
+            $scope.gridOptions.dataSource.read();
+
+            var options = $scope.gridOptions;
+
+            console.log(options);
+
+            //var dataSource = $scope.gridDataSource.data();
+            //var jsonDataSource = dataSource.toJSON();
+            //gridData.postActionItems(jsonDataSource).then(onPostActionItemsCompleted, onError);
+
+        };
+
+        $scope.getItemBackgroundColor = function(dataItem) {
+
+            if (dataItem.Variance < 0)
+                return "{'background-color':'red'}";
+            else if (dataItem.Variance == 0)
+                return "{'background-color':'yellow'}";
+            else if (dataItem.Variance > 0)
+                return "{'background-color':'green'}";
+        }
+
+
     };
 
     app.controller("GridController", GridController);

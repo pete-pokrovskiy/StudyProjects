@@ -15,6 +15,14 @@ namespace KendoNG.AspMvcWeb.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult PostActionItems(List<ActionItemViewModel> actionItems)
+        {
+
+
+            return Json(true);
+        }
+
         public ActionResult GetActionItems()
         {
             var viewModels = new List<ActionItemViewModel>
@@ -27,12 +35,12 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ResourceUniqueName = "iivanov",
                     OldStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
                     NewStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
-                    TimesheetLink = "www.google.com",
+                    TimesheetLink = "http://www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
                     PeriodEnd = DateTime.Now.AddDays(2),
                     ActualsSum = 10,
                     PlanSum = 5,
-                    Variance = (10 - 5),
+                    Variance = 0,
                     HasTaskComments = false,
                     HasTimesheetComments = false
                 },
@@ -44,12 +52,12 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ResourceUniqueName = "iivanov",
                     OldStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
                     NewStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
-                    TimesheetLink = "www.google.com",
+                    TimesheetLink = "http://www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
                     PeriodEnd = DateTime.Now.AddDays(2),
                     ActualsSum = 10,
                     PlanSum = 5,
-                    Variance = (10 - 5),
+                    Variance = -10,
                     HasTaskComments = false,
                     HasTimesheetComments = false
                 },
@@ -61,12 +69,12 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ResourceUniqueName = "ffedorov",
                     OldStatus = new ActionItemStatusViewModel {Id = 2, Name = "Утверждено"},
                     NewStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
-                    TimesheetLink = "www.google.com",
+                    TimesheetLink = "http://www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
                     PeriodEnd = DateTime.Now.AddDays(2),
                     ActualsSum = 10,
                     PlanSum = 5,
-                    Variance = (10 - 5),
+                    Variance = -5,
                     HasTaskComments = false,
                     HasTimesheetComments = false
                 },
@@ -78,12 +86,12 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ResourceUniqueName = "ffedorov",
                     OldStatus = new ActionItemStatusViewModel {Id = 3, Name = "Отклонено"},
                     NewStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
-                    TimesheetLink = "www.google.com",
+                    TimesheetLink = "http://www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
                     PeriodEnd = DateTime.Now.AddDays(2),
                     ActualsSum = 10,
                     PlanSum = 5,
-                    Variance = (10 - 5),
+                    Variance = 5,
                     HasTaskComments = false,
                     HasTimesheetComments = false
                 },
@@ -95,12 +103,12 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ResourceUniqueName = "ffedorov",
                     OldStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
                     NewStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
-                    TimesheetLink = "www.google.com",
+                    TimesheetLink = "http://www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
                     PeriodEnd = DateTime.Now.AddDays(2),
                     ActualsSum = 10,
                     PlanSum = 5,
-                    Variance = (10 - 5),
+                    Variance = 0,
                     HasTaskComments = false,
                     HasTimesheetComments = false
                 },
@@ -111,13 +119,13 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ResourceName = "Федоров Федор",
                     ResourceUniqueName = "ffedorov",
                     OldStatus = new ActionItemStatusViewModel {Id = 2, Name = "Утверждено"},
-                    NewStatus = new ActionItemStatusViewModel {Id = 3, Name = "Отклонено"},
-                    TimesheetLink = "www.google.com",
+                    NewStatus = new ActionItemStatusViewModel {Id = 1, Name = "Открыто"},
+                    TimesheetLink = "http://www.google.com",
                     PeriodBegin = DateTime.Now.AddDays(-5),
                     PeriodEnd = DateTime.Now.AddDays(2),
                     ActualsSum = 10,
                     PlanSum = 5,
-                    Variance = (10 - 5),
+                    Variance = 0,
                     HasTaskComments = false,
                     HasTimesheetComments = false
                 },

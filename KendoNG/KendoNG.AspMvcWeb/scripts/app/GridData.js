@@ -9,9 +9,17 @@
             });
         };
 
-        return{
-            getActionItems: getActionItems
+        var postActionItems = function(actionItems) {
+
+            return $http.post("/Grid/PostActionItems", actionItems).then(function(response) {
+                return response.data;
+            });
         };
+
+        return{
+            getActionItems: getActionItems,
+            postActionItems: postActionItems
+    };
     };
 
     var app = angular.module("app");

@@ -3,6 +3,8 @@
     <title>Playing with kendo grid</title>
     <link href="~/Content/kendo.common.min.css" rel="stylesheet"/>
     <link href="~/Content/kendo.blueopal.min.css" rel="stylesheet"/>
+    <link href="~/Content/app/site.css" rel="stylesheet" />
+
 </head>
 <body ng-controller="GridController">
 
@@ -11,12 +13,12 @@
     <input type="radio" name="grouping" id="groupByActivity" ng-model="groupingOption" ng-change="updateGrouping()" value="project"/>
     <label for="groupByActivity">проекту</label>
 
-    <input type="radio" name="grouping" id="groupByResource"  ng-model="groupingOption" ng-change="updateGrouping()"  value="resource"/>
+    <input type="radio" name="grouping" id="groupByResource" ng-model="groupingOption" ng-change="updateGrouping()" value="resource"/>
     <label for="groupByActivity">сотруднику</label>
     <label for="showOnlyOpenItems">Показывать только открытые записи:</label>
-    <input id="showOnlyOpenItems"  type="checkbox" ng-model="showOnlyOpenItems" ng-change="showOnlyOpenItemsOnChange()"/>
+    <input id="showOnlyOpenItems" type="checkbox" ng-model="showOnlyOpenItems" ng-change="showOnlyOpenItemsOnChange()"/>
 </div>
-<kendo-grid options="gridOptions">
+<kendo-grid options="gridOptions" k-rebind="gridOptions">
     <!--Row Template-->
 
     <table>
@@ -26,32 +28,38 @@
                 <b>#: ResourceName #</b>
             </td>
             <td>
-                <h6>#: NewStatus.Name #</h6>
+                @*<h6>#: NewStatus.Name #</h6>*@
                 <select kendo-drop-down-list
                         k-options="statusOptions"
-                        k-ng-model="dataItem.NewStatus"></select>
-                <h3>{{dataItem.NewStatus.Id}}</h3>
+                        k-ng-model="dataItem.NewStatus">
+                </select>
+                @*<h3>{{dataItem.NewStatus.Id}}</h3>*@
             </td>
-            <td><a href="'{{dataItem.TimesheetLink}}'">Просмотр</a></td>
-            <td>#= kendo.toString(kendo.parseDate(PeriodBegin, 'yyyy-MM-dd'), 'MM/dd/yyyy') #</td>
-            <td>#= kendo.toString(kendo.parseDate(PeriodEnd, 'yyyy-MM-dd'), 'MM/dd/yyyy') #</td>
+            <td>
+                <a href="{{dataItem.TimesheetLink}}" target="_blank">Просмотр</a>
+            </td>
+            <td>#= kendo.toString(kendo.parseDate(PeriodBegin, 'yyyy-MM-dd'), 'dd.MM.yyyy') #</td>
+            <td>#= kendo.toString(kendo.parseDate(PeriodEnd, 'yyyy-MM-dd'), 'dd.MM.yyyy') #</td>
             <td>#: ActualsSum #</td>
             <td>#: PlanSum #</td>
-            <td>#: Variance #</td>
+            <td><div id="circle" ng-style="{{getItemBackgroundColor(dataItem)}}"></div><span>#: Variance #</span></td>
             <td>#: HasTaskComments#</td>
             <td>#:HasTimesheetComments#</td>
         </tr>
     </table>
 </kendo-grid>
+<div>
+    <input type="button" ng-click="postActionItems()" value="Send to server"/>
+</div>
 
 
 <script src="~/scripts/jquery.min.js"></script>
 <script src="~/scripts/angular.min.js"></script>
 <script src="~/scripts/kendo.all.min.js"></script>
 
-
 <script src="~/scripts/app/app.js"></script>
 <script src="~/scripts/app/GridController.js"></script>
-    <script src="~/scripts/app/GridData.js"></script>
+<script src="~/scripts/app/GridData.js"></script>
+
 </body>
 </html>

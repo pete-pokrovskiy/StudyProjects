@@ -5,21 +5,6 @@
 
     var GridController = function ($scope, gridData) {
 
-        $scope.ttipOptions = {
-            filter: '.comment[hasComment="true"]',
-            content: function (e) {
-                var cell = $(e.target);
-
-                return cell.find("span").text();
-
-            }
-        };
-
-        var init = function() {
-            kendo.ui.progress($('body'), true);
-        };
-        
-
         $scope.message = "Testing Grid";
 
         //флаг - показывать ли только открытые action item-ы
@@ -73,7 +58,6 @@
                 read: function (e) {
                     gridData.getActionItems().then(function (records) {
                         e.success(records);
-                        
                     }, function (error) {
                         alert(error);
                     });
@@ -93,24 +77,6 @@
             }
             return "name not found";
         };
-
-        $scope.getTaskCommentImage = function(hasComment) {
-
-            if (hasComment)
-                return "/Content/img/filled.png";
-            else 
-                return "/Content/img/empty.png";
-            
-
-        };
-
-        $scope.getTaskCommentText = function(hasComment) {
-            if (hasComment)
-                return "Есть комментарии";
-            else 
-                return "Нет комментариев";
-        };
-
 
         //группируем по идентификатору ресурса, но нужно отображать его имя
         $scope.getResourceName = function (resourceUniqueName) {
@@ -132,22 +98,15 @@
                 { field: "ActivityName", hidden: true, title: "Наименование активности" },
                 { field: "ActivityCode", hidden: true, groupHeaderTemplate: "{{getActivityName('#=value#')}}" },
                 { field: "ResourceName", title: "Сотрудник" },
-                { field: "NewStatus", title: "Статус", template: '<select kendo-drop-down-list k-options="statusOptions" k-ng-model="dataItem.NewStatus"></select>' },
-                {
-                    field: "TimesheetLink", title: "Ссылка на табель",
-                    template: '<a href="{{dataItem.TimesheetLink}}" target="_blank">Просмотр</a>',
-                    //здесь же можно определеить css
-                    headerAttributes: {
-                        style: "white-space: normal"
-                    }
-                },
-                { field: "PeriodBegin", title: "Начало периода", template: "#= kendo.toString(kendo.parseDate(PeriodBegin, 'yyyy-MM-dd'), 'dd.MM.yyyy') #" },
-                { field: "PeriodEnd", title: "Окончание периода", template: "#= kendo.toString(kendo.parseDate(PeriodEnd, 'yyyy-MM-dd'), 'dd.MM.yyyy') #" },
+                { field: "NewStatus", title: "Статус" },
+                { field: "TimesheetLink", title: "Ссылка на табель" },
+                { field: "PeriodBegin", title: "Начало периода", type: "date", format: "{0: dd.MM.yyyy}" },
+                { field: "PeriodEnd", title: "Окончание периода", type: "date", format: "{0: dd.MM.yyyy}" },
                 { field: "ActualsSum", title: "Сумма списанного времени (часы)" },
                 { field: "PlanSum", title: "Сумма по базовому плану (часы)" },
-                { field: "Variance", title: "Отклонение", width: "100px", template: '<div id="circle" ng-style="{{getItemBackgroundColor(dataItem)}}"></div><span>{{dataItem.Variance}}</span>' },
-                { field: "HasTaskComments", title: "Комментарии по задачам", template: '<span class="comment" hasComment="{{dataItem.HasTaskComments}}"><img ng-src="{{getTaskCommentImage(dataItem.HasTaskComments)}}"/>{{getTaskCommentText(dataItem.HasTaskComments)}}<span style="display:none">{{dataItem.TaskComments}}</span></span>' },
-                { field: "HasTimesheetComments", title: "Комментарии по табелю", template: '<span class="comment" hasComment="{{dataItem.HasTimesheetComments}}"><img ng-src="{{getTaskCommentImage(dataItem.HasTimesheetComments)}}"/>{{getTaskCommentText(dataItem.HasTimesheetComments)}}<span style="display:none">{{dataItem.TimesheetComments}}</span></span>' }
+                { field: "Variance", title: "Отклонение", width: "100px" },
+                { field: "HasTaskComments", title: "Комментарии по задачам" },
+                { field: "HasTimesheetComments", title: "Комментарии по табелю" }
             ]
 
         };
@@ -187,10 +146,7 @@
 
         $scope.postActionItems = function () {
 
-            //$scope.timesheetGrid.hideColumn("Variance");
-
-
-            kendo.ui.progress($('body'), true);
+            $scope.timesheetGrid.hideColumn("Variance");
 
 
             //$scope.gridOptions.columns[3].hidden = true;
@@ -213,7 +169,7 @@
 
         };
 
-        $scope.getItemBackgroundColor = function(dataItem) {
+        $scope.getItemBackgroundColor = function (dataItem) {
 
             if (dataItem.Variance < 0)
                 return "{'background-color':'red'}";
@@ -221,24 +177,7 @@
                 return "{'background-color':'yellow'}";
             else if (dataItem.Variance > 0)
                 return "{'background-color':'green'}";
-        };
-
-
-        $scope.$on("kendoWidgetCreated", function(event, widget){
-            // the event is emitted for every widget; if we have multiple
-            // widgets in this controller, we need to check that the event
-            // is for the one we're interested in.
-            if (widget === $scope.timesheetGrid) {
-                kendo.ui.progress($('body'), false);
-            }
-        });
-
-
-        angular.element(document).ready(function() {
-            init();
-        });
-
-        //init();
+        }
 
 
     };
@@ -247,3 +186,7 @@
 
 
 }());
+
+//function getActivityName(value) {
+//    return "from getActivityName: " + value;
+//}

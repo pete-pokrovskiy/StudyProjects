@@ -9,7 +9,7 @@
 - ссылка
 - картинка + текст-->
 
-<kendo-grid options="testGridOptions">
+<div kendo-grid="timesheetGrid" options="testGridOptions">
     <!--Row Template-->
 
     <table>
@@ -31,7 +31,7 @@
             <td>#: count #</td>
         </tr>
     </table>
-</kendo-grid>
+</div>
 
 <div>
     <input type="button" ng-click="showDataStatuses()" value="Show statuses"/>

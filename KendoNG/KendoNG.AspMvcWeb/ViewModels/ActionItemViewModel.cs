@@ -17,7 +17,9 @@ namespace KendoNG.AspMvcWeb.ViewModels
         public decimal PlanSum { get; set; }
         public decimal Variance { get; set; }
         public bool HasTaskComments { get; set; }
+        public string TaskComments { get; set; }
         public bool HasTimesheetComments { get; set; }
+        public string TimesheetComments { get; set; }
     }
 
     public class ActionItemStatusViewModel

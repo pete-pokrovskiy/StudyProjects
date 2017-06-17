@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using KendoNG.AspMvcWeb.ViewModels;
@@ -42,7 +43,9 @@ namespace KendoNG.AspMvcWeb.Controllers
                     PlanSum = 5,
                     Variance = 0,
                     HasTaskComments = false,
-                    HasTimesheetComments = false
+                    HasTimesheetComments = false,
+                    TaskComments = "Тестовая активность 1 - Иванов Иван -  proj1",
+                    TimesheetComments = "Тестовая активность 1 - Иванов Иван -  proj1"
                 },
                 new ActionItemViewModel()
                 {
@@ -58,8 +61,10 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ActualsSum = 10,
                     PlanSum = 5,
                     Variance = -10,
-                    HasTaskComments = false,
-                    HasTimesheetComments = false
+                    HasTaskComments = true,
+                    HasTimesheetComments = false,
+                                        TaskComments = "Тестовая активность 1 - Иванов Иван -  proj1",
+                    TimesheetComments = "Тестовая активность 1 - Иванов Иван -  proj1"
                 },
                 new ActionItemViewModel()
                 {
@@ -76,7 +81,10 @@ namespace KendoNG.AspMvcWeb.Controllers
                     PlanSum = 5,
                     Variance = -5,
                     HasTaskComments = false,
-                    HasTimesheetComments = false
+                    HasTimesheetComments = false,
+                                        TaskComments = "Тестовая активность 1 - Иванов Иван -  proj1",
+                    TimesheetComments = "Тестовая активность 1 - Иванов Иван -  proj1"
+
                 },
                 new ActionItemViewModel()
                 {
@@ -93,7 +101,9 @@ namespace KendoNG.AspMvcWeb.Controllers
                     PlanSum = 5,
                     Variance = 5,
                     HasTaskComments = false,
-                    HasTimesheetComments = false
+                    HasTimesheetComments = false,
+                                        TaskComments = "Тестовая активность 1 - Иванов Иван -  proj1",
+                    TimesheetComments = "Тестовая активность 1 - Иванов Иван -  proj1"
                 },
                 new ActionItemViewModel()
                 {
@@ -109,8 +119,10 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ActualsSum = 10,
                     PlanSum = 5,
                     Variance = 0,
-                    HasTaskComments = false,
-                    HasTimesheetComments = false
+                    HasTaskComments = true,
+                    HasTimesheetComments = false,
+                                        TaskComments = "Тестовая активность 1 - Иванов Иван -  proj1",
+                    TimesheetComments = "Тестовая активность 1 - Иванов Иван -  proj1"
                 },
                 new ActionItemViewModel()
                 {
@@ -126,10 +138,14 @@ namespace KendoNG.AspMvcWeb.Controllers
                     ActualsSum = 10,
                     PlanSum = 5,
                     Variance = 0,
-                    HasTaskComments = false,
-                    HasTimesheetComments = false
+                    HasTaskComments = true,
+                    HasTimesheetComments = false,
+                                        TaskComments = "Тестовая активность 1 - Иванов Иван -  proj1",
+                    TimesheetComments = "Тестовая активность 1 - Иванов Иван -  proj1"
                 },
             };
+
+            Task.Delay(3000).Wait();
 
             return Json(viewModels, JsonRequestBehavior.AllowGet);
         }

@@ -104,8 +104,8 @@
     <Content Include="Content\BlueOpal\sprite_2x.png" />
     <Content Include="Content\BlueOpal\sprite_kpi.png" />
     <Content Include="Content\BlueOpal\sprite_kpi_2x.png" />
-    <Content Include="Content\img\1.png" />
-    <Content Include="Content\img\2.png" />
+    <Content Include="Content\img\filled.png" />
+    <Content Include="Content\img\empty.png" />
     <Content Include="Content\kendo.blueopal.min.css" />
     <Content Include="Content\kendo.common.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -116,6 +116,7 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\app\app.js" />
     <Content Include="scripts\app\GridController.js" />
+    <Content Include="scripts\app\GridController2.js" />
     <Content Include="scripts\app\GridData.js" />
     <Content Include="scripts\app\TimesheetsCtrl.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -142,6 +143,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\Timesheets\Manage.cshtml" />
     <Content Include="Views\Grid\Index.cshtml" />
+    <Content Include="Views\Grid\Index2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

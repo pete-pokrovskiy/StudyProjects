@@ -11,6 +11,7 @@ namespace GettingStartedEF6.Domain
         public User Author { get; set; }
         public Guid AuthorId { get; set; }
         public string ToStr { get; set; } 
+        public EmailImportance Importance { get; set; }
         public List<Attachment> Attachments { get; set; } 
     }
 }

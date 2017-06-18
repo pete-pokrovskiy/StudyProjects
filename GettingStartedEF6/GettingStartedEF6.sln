@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStartedEF6.DataModel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStartedEF6.Domain", "GettingStartedEF6.Domain\GettingStartedEF6.Domain.csproj", "{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStartedEF6.ConsoleApp", "GettingStartedEF6.ConsoleApp\GettingStartedEF6.ConsoleApp.csproj", "{7D91AA1C-6A79-447C-94E2-5E81A71AC068}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52D299A4-EFEE-412A-ABEF-FDC5959D3DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D91AA1C-6A79-447C-94E2-5E81A71AC068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D91AA1C-6A79-447C-94E2-5E81A71AC068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D91AA1C-6A79-447C-94E2-5E81A71AC068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D91AA1C-6A79-447C-94E2-5E81A71AC068}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

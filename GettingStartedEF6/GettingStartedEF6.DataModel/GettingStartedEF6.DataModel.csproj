@@ -54,6 +54,18 @@
     <Compile Include="Migrations\201705272157110_initial.Designer.cs">
       <DependentUpon>201705272157110_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706181810164_AddEmailImportanceToEmail.cs" />
+    <Compile Include="Migrations\201706181810164_AddEmailImportanceToEmail.Designer.cs">
+      <DependentUpon>201706181810164_AddEmailImportanceToEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706181814124_RenameEmailImportance.cs" />
+    <Compile Include="Migrations\201706181814124_RenameEmailImportance.Designer.cs">
+      <DependentUpon>201706181814124_RenameEmailImportance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706181916019_DefaultIds.cs" />
+    <Compile Include="Migrations\201706181916019_DefaultIds.Designer.cs">
+      <DependentUpon>201706181916019_DefaultIds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +84,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705272157110_initial.resx">
       <DependentUpon>201705272157110_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181810164_AddEmailImportanceToEmail.resx">
+      <DependentUpon>201706181810164_AddEmailImportanceToEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181814124_RenameEmailImportance.resx">
+      <DependentUpon>201706181814124_RenameEmailImportance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181916019_DefaultIds.resx">
+      <DependentUpon>201706181916019_DefaultIds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

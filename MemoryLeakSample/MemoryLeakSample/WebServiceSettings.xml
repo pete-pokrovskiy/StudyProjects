@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <Requisition>
+    <ErrorMail>clarity_support@croc.ru</ErrorMail>
+  </Requisition>
+  <Integration>
+    <Sys3>
+      <StartOperationDate>2012-10-01</StartOperationDate>
+    </Sys3>
+  </Integration>
+  <IT>
+    <Semaphore>
+      <NameTemplate>MQReader_IT_TaskID_{0}</NameTemplate>
+      <Timeout>10000</Timeout>
+    </Semaphore>
+  </IT>
+  <CrocHolidays>
+    <Resource>clarity_calendar</Resource>
+    <DaysShift>90</DaysShift>
+  </CrocHolidays>
+  <Timesheets>
+    <DepartmentPmos>
+      <Department code="19">ppokrovskiy</Department>
+    </DepartmentPmos>
+  </Timesheets>
+  <OBS>
+    <ResourceOBSName>Resource OBS</ResourceOBSName>
+    <ResourceOBSCode>ODMD_RES_OBS</ResourceOBSCode>
+    <DepartmentOBSName>Department OBS</DepartmentOBSName>
+    <DepartmentOBSCode>Department OBS</DepartmentOBSCode>
+  </OBS>
+  <MSP>
+    <HelpInfoLink>http://blog/pages/viewpage.action?pageId=149691939</HelpInfoLink>
+    <LocalResourcesOBS>/LocalResources</LocalResourcesOBS>
+    <AddinVersion>1.4.1</AddinVersion>
+  </MSP>
+</Settings>

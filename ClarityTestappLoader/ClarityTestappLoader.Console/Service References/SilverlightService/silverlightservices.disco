@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://clarity-testapp.croc.ru:88/Clarityws/silverlightservices.asmx?wsdl" docRef="http://clarity-testapp.croc.ru:88/Clarityws/silverlightservices.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://clarity-testapp.croc.ru:88/Clarityws/silverlightservices.asmx" xmlns:q1="www.croc.ru" binding="q1:SilverLightServicesSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://clarity-testapp.croc.ru:88/Clarityws/silverlightservices.asmx" xmlns:q2="www.croc.ru" binding="q2:SilverLightServicesSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

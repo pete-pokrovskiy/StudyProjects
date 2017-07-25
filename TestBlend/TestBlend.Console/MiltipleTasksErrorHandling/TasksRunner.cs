@@ -35,6 +35,8 @@ namespace TestBlend.Console.MiltipleTasksErrorHandling
             Random rand = new Random();
             List<Task<string>> tasks = new List<Task<string>>();
 
+            Dictionary<int, int> runTasksDictionary = new Dictionary<int, int>();
+
             try
             {
                 for (int i = 0; i < 8; i++)
@@ -48,6 +50,8 @@ namespace TestBlend.Console.MiltipleTasksErrorHandling
                         return workUnit.Work(currentIndex, sec*1000);
                     });
 
+                    runTasksDictionary.Add(task.Id, currentIndex);
+
                     tasks.Add(task);
                 }
 
@@ -58,10 +62,14 @@ namespace TestBlend.Console.MiltipleTasksErrorHandling
                 catch (Exception ex)
                 {
                     //в этом месте получаем aggregate exception, в inner exception-aх которого все исключения, выброшенные тасками
-
-                    foreach (var task in tasks)
+                    System.Console.WriteLine();
+                    System.Console.WriteLine();
+                    System.Console.WriteLine("Following tasks ended up with errors:");
+                    foreach (var task in tasks.Where(t => t.IsFaulted))
                     {
-                        System.Console.WriteLine("{0}  {1}", task.Status, task.IsFaulted);
+                        System.Console.WriteLine("Task with input parameter {0}", runTasksDictionary[task.Id]);
+                        System.Console.WriteLine("Exception details: ");
+                        System.Console.WriteLine(task.Exception.ToString());
                     }
                 }
             }
@@ -78,11 +86,11 @@ namespace TestBlend.Console.MiltipleTasksErrorHandling
             foreach (var task in tasks)
             {
                 //при обращении к резалту таска с ошибкой будет повторно выброшено исключение
-                //поэтому либо проверять faulted или статус. либо  оборачивать в try-catch
-                //if (!task.IsFaulted)
+                //поэтому либо проверять faulted или статус. либо  оборачивать в try-catch               
                 try
                 {
-                    System.Console.WriteLine(task.Result);
+                    if (!task.IsFaulted)
+                        System.Console.WriteLine(task.Result);
                 }
                 catch (Exception ex)
                 {

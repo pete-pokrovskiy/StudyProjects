@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Reflection;
 using System.Web;
 using System.Web.Services;
 using System.Xml;
+using MemoryLeakSample.NotificationViewModels;
 
 namespace MemoryLeakSample
 {
@@ -19,14 +22,13 @@ namespace MemoryLeakSample
     // [System.Web.Script.Services.ScriptService]
     public class LeakService : System.Web.Services.WebService
     {
-
         private static readonly XmlDocument WebServiceSettings;
 
         static LeakService()
         {
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
             path = path.Substring(6) + "\\";
-            
+
 
             WebServiceSettings = new XmlDocument();
             WebServiceSettings.Load(path + @"WebServiceSettings.xml");
@@ -37,6 +39,30 @@ namespace MemoryLeakSample
         public string HelloWorld()
         {
             return "Hello World";
+        }
+
+        [WebMethod]
+        public string SendEmail()
+        {
+            SmtpClient client = new SmtpClient("localhost", 25);
+
+            var body = NotificationFactory.ParseTemplate(new SMNotificationViewModel
+            {
+                ProjectUrl = "www.google.com",
+                ProjectName = Guid.NewGuid().ToString(),
+                TaskUrl = "www.yandex.ru",
+                TaskName = Guid.NewGuid().ToString()
+            });
+
+
+            MailMessage message = new MailMessage("testfrom@croc.ru", "testto@croc.ru", "Test subject", body)
+            {
+                IsBodyHtml = true
+            };
+
+            client.Send(message);
+
+            return Process.GetCurrentProcess().Id.ToString();
         }
     }
 }

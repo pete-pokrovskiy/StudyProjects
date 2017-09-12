@@ -21,6 +21,13 @@ namespace MemoryLeakSample.Client.MemoryLeakService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
         System.Threading.Tasks.Task<MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponse> HelloWorldAsync(MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest request);
+        
+        // CODEGEN: Generating message contract since element name SendEmailResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendEmail", ReplyAction="*")]
+        MemoryLeakSample.Client.MemoryLeakService.SendEmailResponse SendEmail(MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendEmail", ReplyAction="*")]
+        System.Threading.Tasks.Task<MemoryLeakSample.Client.MemoryLeakService.SendEmailResponse> SendEmailAsync(MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -84,6 +91,67 @@ namespace MemoryLeakSample.Client.MemoryLeakService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendEmailRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendEmail", Namespace="http://tempuri.org/", Order=0)]
+        public MemoryLeakSample.Client.MemoryLeakService.SendEmailRequestBody Body;
+        
+        public SendEmailRequest() {
+        }
+        
+        public SendEmailRequest(MemoryLeakSample.Client.MemoryLeakService.SendEmailRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class SendEmailRequestBody {
+        
+        public SendEmailRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendEmailResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendEmailResponse", Namespace="http://tempuri.org/", Order=0)]
+        public MemoryLeakSample.Client.MemoryLeakService.SendEmailResponseBody Body;
+        
+        public SendEmailResponse() {
+        }
+        
+        public SendEmailResponse(MemoryLeakSample.Client.MemoryLeakService.SendEmailResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SendEmailResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string SendEmailResult;
+        
+        public SendEmailResponseBody() {
+        }
+        
+        public SendEmailResponseBody(string SendEmailResult) {
+            this.SendEmailResult = SendEmailResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface LeakServiceSoapChannel : MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -132,6 +200,29 @@ namespace MemoryLeakSample.Client.MemoryLeakService {
             MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest inValue = new MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest();
             inValue.Body = new MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequestBody();
             return ((MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap)(this)).HelloWorldAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        MemoryLeakSample.Client.MemoryLeakService.SendEmailResponse MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap.SendEmail(MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest request) {
+            return base.Channel.SendEmail(request);
+        }
+        
+        public string SendEmail() {
+            MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest inValue = new MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest();
+            inValue.Body = new MemoryLeakSample.Client.MemoryLeakService.SendEmailRequestBody();
+            MemoryLeakSample.Client.MemoryLeakService.SendEmailResponse retVal = ((MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap)(this)).SendEmail(inValue);
+            return retVal.Body.SendEmailResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<MemoryLeakSample.Client.MemoryLeakService.SendEmailResponse> MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap.SendEmailAsync(MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest request) {
+            return base.Channel.SendEmailAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<MemoryLeakSample.Client.MemoryLeakService.SendEmailResponse> SendEmailAsync() {
+            MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest inValue = new MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest();
+            inValue.Body = new MemoryLeakSample.Client.MemoryLeakService.SendEmailRequestBody();
+            return ((MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap)(this)).SendEmailAsync(inValue);
         }
     }
 }

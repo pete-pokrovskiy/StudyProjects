@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,17 +13,22 @@ namespace MemoryLeakSample.Client
     {
         static void Main(string[] args)
         {
+            Console.WriteLine($"Current process id = {Process.GetCurrentProcess().Id}");
 
-            for (int i = 0; i < 20; i++)
+            List<MemoryLeakService.LeakServiceSoapClient> clientList = new List<LeakServiceSoapClient>();
+
+            for (int i = 0; i < 1000; i++)
             {
-
+                Console.WriteLine($" start iteration {i}..");
                 Task.Delay(1000).Wait();
 
                 MemoryLeakService.LeakServiceSoapClient client = new LeakServiceSoapClient();
 
-                 string result  = client.HelloWorld();
+                clientList.Add(client);
 
-                Console.WriteLine($"result {i}: {result} ");
+                 var processId = client.SendEmail();
+                Console.WriteLine($"Service processId: {processId}");
+                Console.WriteLine($" finish iteration {i}..");
             }
 
 

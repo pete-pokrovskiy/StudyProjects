@@ -18,6 +18,8 @@ namespace GettingStartedEF6.DataModel
 
             //migration commands reference
             //https://coding.abel.nu/2012/03/ef-migrations-command-reference/
+
+            Database.SetInitializer(new NullDatabaseInitializer<GettingStartedContext>());
         }
 
         public DbSet<Email> Emails { get; set; }
@@ -44,7 +46,7 @@ namespace GettingStartedEF6.DataModel
             var entries = ChangeTracker.Entries();
 
             // проставим все сущностям, которые были добавлены или изменились соответствующие даты
-            foreach (var historyItem in ChangeTracker.Entries().Where(e => (e.State == EntityState.Added || e.State == EntityState.Modified )).Select(e => (IModificationHistory) e))
+            foreach (var historyItem in ChangeTracker.Entries().Where(e => (e.State == EntityState.Added || e.State == EntityState.Modified ) && e.Entity is IModificationHistory).Select(e => e.Entity as IModificationHistory))
             {
                 historyItem.DateModified = DateTime.Now;
 
@@ -56,7 +58,7 @@ namespace GettingStartedEF6.DataModel
             var saveChangesResult = base.SaveChanges();
 
             //снимем флаг IsDirty
-            foreach (var historyItem in ChangeTracker.Entries().OfType<IModificationHistory>())
+            foreach (var historyItem in ChangeTracker.Entries().Where(e => e.Entity is IModificationHistory).Select(e => e.Entity as IModificationHistory))
             {
                 historyItem.IsDirty = false;
             }

@@ -11,20 +11,23 @@ namespace GettingStartedEF6.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Database.SetInitializer(new NullDatabaseInitializer<GettingStartedContext>());
-
-            CreateUser();
-            //GetAllUsers();
+            //for(int i =0; i < 10; i++)
+            //    CreateUser();
+            GetAllUsers();
+            GetAllUsersNoTracking();
             //CreateEmailWithAttachemnts();
             //GetEmailAndUpdateOneOfTheAttachments();
         }
 
+
+
         private static void CreateUser()
         {
+            Random r = new Random(DateTime.Now.Millisecond);
             var user = new User
             {
-                Name = "first normal user",
-                EmailAddress = "normal@mail.ru"
+                Name = $"normal_user_{r.Next(1, 1000)}",
+                EmailAddress = $"normal{r.Next(1, 1000)}@mail.ru"
             };
 
             using (var context = new GettingStartedContext())
@@ -44,6 +47,21 @@ namespace GettingStartedEF6.ConsoleApp
                 context.Database.Log = Console.WriteLine;
 
                 var users = context.Users.ToList();
+
+                foreach (var user in users)
+                {
+                    Console.WriteLine(user.Id);
+                }
+            }
+        }
+
+        private static void GetAllUsersNoTracking()
+        {
+            using (var context = new GettingStartedContext())
+            {
+                context.Database.Log = Console.WriteLine;
+
+                var users = context.Users.AsNoTracking().ToList();
 
                 foreach (var user in users)
                 {

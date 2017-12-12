@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+    <title>title</title>
+
+    <link href="~/Content/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="~/Content/app/site.css" rel="stylesheet" />
+
+
+</head>
+<body ng-controller="TaskTreeCtrl as vm">
+<div>
+    <div><input type="button" ng-click="vm.test()" value="Test"/></div>
+    <div>
+        <input type="text" ng-model="vm.filter"/>
+        <input type="button" ng-click="vm.filterAndExpand()" value="Поиск"/>
+        <span style="margin-left: 10px;" ng-model="vm.checkedNodesStr">{{vm.checkedNodesStr}}</span>
+    </div>
+    <div>
+        <a href="#" ng-click="vm.checkAll()">Check all</a>
+        <a href="#" ng-click="vm.uncheckAll()">Uncheck all</a>
+        <a href="#" ng-click="vm.expandAll()">Expand all</a>
+        <a href="#" ng-click="vm.collapseAll()">Collapse all</a>
+
+    </div>
+
+    <div id="treeArea" style="height: 300px; overflow: auto; border: 1px black solid">
+        <div id="taskTreeElement" kendo-tree-view="taskTree" k-options="vm.taskTreeOptions"></div>
+    </div>
+    <div>
+    </div>
+
+
+</div>
+
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/angular.min.js"></script>
+    <script src="~/scripts/kendo.all.min.js"></script>
+
+    <script src="~/scripts/app/app.js"></script>
+    <script src="~/scripts/app/TaskTree/taskTree.controller.js"></script>
+</body>
+</html>

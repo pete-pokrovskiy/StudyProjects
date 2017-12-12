@@ -11,7 +11,7 @@ namespace GettingStartedEF6.DataModel.Migrations
                 "dbo.Attachments",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity:true, defaultValueSql: "newsequentialid()"),
                         FileName = c.String(),
                         FileSize = c.Double(nullable: false),
                         FileType = c.Int(nullable: false),
@@ -25,7 +25,7 @@ namespace GettingStartedEF6.DataModel.Migrations
                 "dbo.Emails",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Subject = c.String(),
                         Body = c.String(),
                         AuthorId = c.Guid(nullable: false),
@@ -39,7 +39,7 @@ namespace GettingStartedEF6.DataModel.Migrations
                 "dbo.Users",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Name = c.String(),
                         EmailAddress = c.String(),
                     })

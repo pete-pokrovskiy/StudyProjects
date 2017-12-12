@@ -11,10 +11,65 @@ namespace GettingStartedEF6.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Database.SetInitializer(new NullDatabaseInitializer<GettingStartedContext>());
+            //for(int i =0; i < 10; i++)
+            //    CreateUser();
+            GetAllUsers();
+            GetAllUsersNoTracking();
             //CreateEmailWithAttachemnts();
-            GetEmailAndUpdateOneOfTheAttachments();
+            //GetEmailAndUpdateOneOfTheAttachments();
         }
+
+
+
+        private static void CreateUser()
+        {
+            Random r = new Random(DateTime.Now.Millisecond);
+            var user = new User
+            {
+                Name = $"normal_user_{r.Next(1, 1000)}",
+                EmailAddress = $"normal{r.Next(1, 1000)}@mail.ru"
+            };
+
+            using (var context = new GettingStartedContext())
+            {
+                context.Database.Log = info => Console.WriteLine(info);
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+        }
+
+
+        private static void GetAllUsers()
+        {
+
+            using (var context = new GettingStartedContext())
+            {
+                context.Database.Log = Console.WriteLine;
+
+                var users = context.Users.ToList();
+
+                foreach (var user in users)
+                {
+                    Console.WriteLine(user.Id);
+                }
+            }
+        }
+
+        private static void GetAllUsersNoTracking()
+        {
+            using (var context = new GettingStartedContext())
+            {
+                context.Database.Log = Console.WriteLine;
+
+                var users = context.Users.AsNoTracking().ToList();
+
+                foreach (var user in users)
+                {
+                    Console.WriteLine(user.Id);
+                }
+            }
+        }
+
 
         private static void GetEmailAndUpdateOneOfTheAttachments()
         {
@@ -39,17 +94,21 @@ namespace GettingStartedEF6.ConsoleApp
 
         static void CreateEmailWithAttachemnts()
         {
+
+            var user = new User
+            {
+                Name = "Pete",
+                EmailAddress = "pete@email.com"
+            };
+
+
             Email email = new Email
             {
                 Body = "test body",
                 Subject = "test subject",
                 Importance = EmailImportance.High,
                 ToStr = "test@email.com",
-                Author = new User
-                {
-                    Name = "Pete",
-                    EmailAddress = "pete@email.com"
-                },
+                //Author = user,
                 Attachments = new List<Attachment>
                 {
                     new Attachment
@@ -76,9 +135,12 @@ namespace GettingStartedEF6.ConsoleApp
             using (var context = new GettingStartedContext())
             {
                 context.Database.Log = Console.WriteLine;
+                context.Users.Add(user);
                 context.Emails.Add(email);
                 context.SaveChanges();
             }
         }
+
+        //TODO: попробовать конструкцию: context.Entry(..).CurrentValues.SetValues(...)
     }
 }

@@ -1,3 +1,5 @@
+using GettingStartedEF6.Domain;
+
 namespace GettingStartedEF6.DataModel.Migrations
 {
     using System;
@@ -10,22 +12,20 @@ namespace GettingStartedEF6.DataModel.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            //Database.SetInitializer<GettingStartedContext>(new DropCreateDatabaseAlways<GettingStartedContext>());
+
+            //TODO: вместо того, что выше попробовать что-то вроде: update-database -TargetMigration:0 | update-database -force | update-database -force
         }
 
         protected override void Seed(GettingStartedEF6.DataModel.GettingStartedContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Users.Add(new User
+            {
+                Name = "SEED user",
+                EmailAddress = "seed_test@mail.ru",
+                DateCreated = DateTime.Parse("1900-01-01 00:00:00"),
+                DateModified = DateTime.Parse("1900-01-01 00:00:00")
+            });
         }
     }
 }

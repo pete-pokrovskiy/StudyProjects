@@ -16,14 +16,14 @@ namespace KendoNG.AspMvcWeb.Controllers
         }
 
 
-        public JsonResult TestTask()
-        {
+        //public JsonResult TestTask()
+        //{
             //var task = Task.Factory.StartNew(() =>
             //{
             //    Task.Delay(10000).Wait();
             //});
 
             //task.
-        }
+        //}
     }
 }

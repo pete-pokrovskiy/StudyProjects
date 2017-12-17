@@ -33,7 +33,10 @@
 
             var checkedNodesIds = [];
             filter(treeDataSource, vm.filter.toLowerCase(), checkedNodesIds);
-            
+
+            var data = treeDataSource.data();
+
+            //treeDataSource.filter({ field: "hidden", operator: "neq", value: true });
             if (checkedNodesIds.length > 0){
                 //$scope.taskTree.expandPath(checkedNodesIds);
             }
@@ -312,6 +315,19 @@
             $scope.taskTree.collapse(".k-item");
         };
 
+        vm.showAll = function(data) {
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    var item = data[i];
+                    item.hidden = false;
+                    if (item.hasChildren) {
+                        
+                    }
+                }
+            }
+
+        }
+
         vm.expandAll = function () {
 
             $scope.taskTree.expand(".k-item");
@@ -363,50 +379,57 @@
             return checkedNodes;
         }
 
-        function filter2(dataSource, query) {
-            var hasVisibleChildren = false;
-            var data = dataSource.data();
-            //var data = dataSource instanceof kendo.data.HierarchicalDataSource && dataSource.data();
+        //function filter2(dataSource, query) {
+        //    var hasVisibleChildren = false;
+        //    var data = dataSource.data();
+        //    //var data = dataSource instanceof kendo.data.HierarchicalDataSource && dataSource.data();
 
-            for (var i = 0; i < data.length; i++) {
-                var item = data[i];
-                var text = item.text.toLowerCase();
-                //TODO: ПОПРОБОВАТЬ НОВЫЙ ПОДХОД
-                var itemVisible =
-                    query === true // parent already matches
-                    || query === "" // query is empty
-                    || text.indexOf(query) >= 0; // item text matches query
+        //    for (var i = 0; i < data.length; i++) {
+        //        var item = data[i];
+        //        var text = item.text.toLowerCase();
+        //        //TODO: ПОПРОБОВАТЬ НОВЫЙ ПОДХОД
+        //        var itemVisible =
+        //            query === true // parent already matches
+        //            || query === "" // query is empty
+        //            || text.indexOf(query) >= 0; // item text matches query
 
-                var anyVisibleChildren = filter(item.children, itemVisible || query); // pass true if parent matches
+        //        var anyVisibleChildren = filter(item.children, itemVisible || query); // pass true if parent matches
 
-                hasVisibleChildren = hasVisibleChildren || anyVisibleChildren || itemVisible;
+        //        hasVisibleChildren = hasVisibleChildren || anyVisibleChildren || itemVisible;
 
-                //item.hidden = !itemVisible && !anyVisibleChildren;
+        //        //item.hidden = !itemVisible && !anyVisibleChildren;
 
-                var success = itemVisible || anyVisibleChildren;
+        //        var success = itemVisible || anyVisibleChildren;
 
-                //if (!item.hidden) {
-                if(success){
-                    //найдем узел по уиду
-                    var correspondedNode = $scope.taskTree.findByUid(item.uid);
-                    item.set("checked", true);
-                    $scope.taskTree.expand(correspondedNode);
-                } else {
-                    var correspondedNode = $scope.taskTree.findByUid(item.uid);
-                    item.set("checked", false);
-                    $scope.taskTree.collapse(correspondedNode);
+        //        //найдем узел по уиду
+        //        var correspondedNode = $scope.taskTree.findByUid(item.uid);
 
-                }
-            }
+        //        //if (!item.hidden) {
+        //        if(success){
+        //            //item.set("checked", true);
+        //            item.checked = true;
 
-            //if (data) {
-            //    // re-apply filter on children
-            //    dataSource.filter({ field: "hidden", operator: "neq", value: true });
-            //}
+        //            //item.hidden = true;
 
-            return hasVisibleChildren;
+        //            $scope.taskTree.expand(correspondedNode);
+        //        } else {
+        //            //item.set("checked", false);
+        //            item.checked = true;
 
-        }
+        //            //item.hidden = true;
+        //            $scope.taskTree.collapse(correspondedNode);
+
+        //        }
+        //    }
+
+        //    if (data) {
+        //        // re-apply filter on children
+        //        dataSource.filter({ field: "hidden", operator: "neq", value: true });
+        //    }
+
+        //    return hasVisibleChildren;
+
+        //}
 
         function filter(dataSource, query, checkedNodesIds) {
 
@@ -444,6 +467,7 @@
                 if (itemSatisfied || anyChildreChecked) {
                     //найдем узел по уиду
                     item.set("checked", true);
+                    item.set("hidden", false);
                     checkedNodesIds.push(item.id);
 
                     if (item.hasChildren) {
@@ -455,6 +479,7 @@
                 } else {
                     var correspondedNode = $scope.taskTree.findByUid(item.uid);
                     item.set("checked", false);
+                    item.set("hidden", true);
                     if (item.hasChildren) {
                         item.set("expanded", false);
                         //$scope.taskTree.collapse($scope.taskTree.findByUid(item.uid));
@@ -462,6 +487,11 @@
                 }
 
 
+            }
+
+            if (data) {
+                // re-apply filter on children
+                dataSource.filter({ field: "hidden", operator: "neq", value: true });
             }
 
             return isBranchChecked;
@@ -476,6 +506,7 @@
                     var node = nodes[i];
 
                     node.set("checked", true);
+                    node.set("hidden", false);
                     var correspondedNode = $scope.taskTree.findByUid(node.uid);
                     $scope.taskTree.expand(correspondedNode);
 

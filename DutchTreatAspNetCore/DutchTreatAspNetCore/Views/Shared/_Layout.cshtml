@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Dutch Treat: @ViewBag.Title</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <header class="container">
+            <div class="navbar-header">
+                <div class="navbar-brand">Dutch Treat</div>
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">&#9776;</button>
+            </div>
+            <div id="menu" class="collapse navbar-collapse" >
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="App" asp-action="Index">Home</a></li>
+                    <li><a asp-controller="App" asp-action="Contacts">Contacts</a></li>
+                    <li><a asp-controller="App" asp-action="About">About us</a></li>
+                </ul>
+            </div>
+        </header>
+    </div>
+    <section class="container">
+        <h3>@ViewBag.Title</h3>
+        @RenderBody()
+    </section>
+    <footer class="container">
+        <div class="text-center">Copyright 2017</div>
+    </footer>
+    <!--Блок с общими скриптами для всех страниц-->
+    <script src="~/lib/jQuery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!--Дополнительная секция со скриптами, специфичными для конкретной страницы-->
+    @RenderSection("Scripts", false)
+
+</body>
+</html>
+
+

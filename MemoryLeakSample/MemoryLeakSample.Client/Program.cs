@@ -13,26 +13,65 @@ namespace MemoryLeakSample.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Current process id = {Process.GetCurrentProcess().Id}");
+            //TestLongRequests();
+            Console.WriteLine("Start processing..");
+            SendMultipleEmails();
+            Console.ReadKey();
+        }
 
-            List<MemoryLeakService.LeakServiceSoapClient> clientList = new List<LeakServiceSoapClient>();
+        static void SendMultipleEmails()
+        {
+            var taskList = new List<Task>();
 
             for (int i = 0; i < 1000; i++)
             {
-                Console.WriteLine($" start iteration {i}..");
-                Task.Delay(1000).Wait();
+                for (int j = 0; j < 100; j++)
+                {
+                    Console.WriteLine($"Current iteration: {i}.{j}");
+                    var task = Task.Factory.StartNew(() =>
+                    {
 
-                MemoryLeakService.LeakServiceSoapClient client = new LeakServiceSoapClient();
+                        Local_MemoryLeakSample.LeakServiceSoapClient client =
+                            new Local_MemoryLeakSample.LeakServiceSoapClient();
+                        client.SendEmail();
 
-                clientList.Add(client);
+                    });
+                    taskList.Add(task);
+                }
 
-                 var processId = client.SendEmail();
-                Console.WriteLine($"Service processId: {processId}");
-                Console.WriteLine($" finish iteration {i}..");
+                Thread.Sleep(i * 1000);
+            
             }
 
+            Task.WhenAll(taskList);
+        }
 
+
+        static void TestLongRequests()
+        {
+            var taskList = new List<Task>();
+
+            for (int i = 0; i < 1000; i ++)
+            {
+                var task = Task.Factory.StartNew(() =>
+                {
+
+                    Local_MemoryLeakSample.LeakServiceSoapClient client =
+                        new Local_MemoryLeakSample.LeakServiceSoapClient();
+                    client.LongRequest();
+
+                });
+
+                Thread.Sleep(i * 1000);
+
+                taskList.Add(task);
+
+
+            }
+
+            Task.WhenAll(taskList);
 
         }
+
     }
 }

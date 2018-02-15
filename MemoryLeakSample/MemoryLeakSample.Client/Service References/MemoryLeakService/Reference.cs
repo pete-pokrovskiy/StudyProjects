@@ -15,12 +15,11 @@ namespace MemoryLeakSample.Client.MemoryLeakService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MemoryLeakService.LeakServiceSoap")]
     public interface LeakServiceSoap {
         
-        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponse HelloWorld(MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LongRequest", ReplyAction="*")]
+        void LongRequest();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponse> HelloWorldAsync(MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LongRequest", ReplyAction="*")]
+        System.Threading.Tasks.Task LongRequestAsync();
         
         // CODEGEN: Generating message contract since element name SendEmailResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendEmail", ReplyAction="*")]
@@ -28,67 +27,6 @@ namespace MemoryLeakSample.Client.MemoryLeakService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendEmail", ReplyAction="*")]
         System.Threading.Tasks.Task<MemoryLeakSample.Client.MemoryLeakService.SendEmailResponse> SendEmailAsync(MemoryLeakSample.Client.MemoryLeakService.SendEmailRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
-        public MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequestBody Body;
-        
-        public HelloWorldRequest() {
-        }
-        
-        public HelloWorldRequest(MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldRequestBody {
-        
-        public HelloWorldRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
-        public MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponseBody Body;
-        
-        public HelloWorldResponse() {
-        }
-        
-        public HelloWorldResponse(MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldResult;
-        
-        public HelloWorldResponseBody() {
-        }
-        
-        public HelloWorldResponseBody(string HelloWorldResult) {
-            this.HelloWorldResult = HelloWorldResult;
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -179,27 +117,12 @@ namespace MemoryLeakSample.Client.MemoryLeakService {
                 base(binding, remoteAddress) {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponse MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap.HelloWorld(MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest request) {
-            return base.Channel.HelloWorld(request);
+        public void LongRequest() {
+            base.Channel.LongRequest();
         }
         
-        public string HelloWorld() {
-            MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest inValue = new MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest();
-            inValue.Body = new MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequestBody();
-            MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponse retVal = ((MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap)(this)).HelloWorld(inValue);
-            return retVal.Body.HelloWorldResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponse> MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap.HelloWorldAsync(MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest request) {
-            return base.Channel.HelloWorldAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<MemoryLeakSample.Client.MemoryLeakService.HelloWorldResponse> HelloWorldAsync() {
-            MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest inValue = new MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequest();
-            inValue.Body = new MemoryLeakSample.Client.MemoryLeakService.HelloWorldRequestBody();
-            return ((MemoryLeakSample.Client.MemoryLeakService.LeakServiceSoap)(this)).HelloWorldAsync(inValue);
+        public System.Threading.Tasks.Task LongRequestAsync() {
+            return base.Channel.LongRequestAsync();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

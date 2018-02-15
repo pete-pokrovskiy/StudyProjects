@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Reflection;
+using System.Threading;
 using System.Web;
 using System.Web.Services;
 using System.Xml;
@@ -35,11 +36,15 @@ namespace MemoryLeakSample
         }
 
 
+
         [WebMethod]
-        public string HelloWorld()
+        public void LongRequest()
         {
-            return "Hello World";
+            Thread.Sleep(30000);   
+           
         }
+
+
 
         [WebMethod]
         public string SendEmail()

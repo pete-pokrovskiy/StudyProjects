@@ -13,10 +13,21 @@ namespace MemoryLeakSample
     {
         public static string ParseTemplate<T>(T model)
         {
-            //TODO: вероятно стоит вынести папку с шаблонами в отдельную директорию, общую для всех приложений
+
             string templatePath = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath),
                 "NotificationTemplates\\SMActTaskClosed.cshtml");
-            var emailHtmlBody = Engine.Razor.RunCompile("SMActTaskClosed", File.ReadAllText(templatePath), null, model);
+
+            var templateService = new TemplateService();
+            string emailHtmlBody =
+                templateService.Parse(
+                    File.ReadAllText(templatePath), model, null, "SMActTaskClosed");
+            return emailHtmlBody;
+
+
+            //TODO: вероятно стоит вынести папку с шаблонами в отдельную директорию, общую для всех приложений
+            //string templatePath = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath),
+            //    "NotificationTemplates\\SMActTaskClosed.cshtml");
+            ////var emailHtmlBody = Engine.Razor.RunCompile("SMActTaskClosed", File.ReadAllText(templatePath), null, model);
 
 
             //var templateService = new TemplateService();
@@ -25,7 +36,7 @@ namespace MemoryLeakSample
             //        File.ReadAllText(templatePath), model, null, "SMActTaskClosed");
 
 
-            return emailHtmlBody;
+            //return emailHtmlBody;
         }
     }
 }

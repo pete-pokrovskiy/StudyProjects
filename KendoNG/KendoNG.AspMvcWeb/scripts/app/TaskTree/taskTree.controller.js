@@ -260,7 +260,7 @@
                 e.preventDefault();
             },
             checkboxes: {
-                checkChildren: true
+                checkChildren: false
             },
             dataTextField: "text",
             messages: {
@@ -452,6 +452,8 @@
                 isBranchChecked = isBranchChecked || itemSatisfied;
                 //если совпадает, то выделим и раскроем всю ветку вниз
                 if (itemSatisfied) {
+
+
 
                     if (item.hasChildren)
                         checkAndExpandBranch(item.items);

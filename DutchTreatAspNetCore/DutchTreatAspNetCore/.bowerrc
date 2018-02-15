@@ -1,0 +1,5 @@
+{
+  "proxy": "http://proxy.croc.ru:8000/",
+  "https-proxy": "http://proxy.croc.ru:8000",
+  "directory": "wwwroot/lib"
+}

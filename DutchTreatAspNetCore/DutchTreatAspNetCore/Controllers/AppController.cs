@@ -1,4 +1,5 @@
-﻿using DutchTreatAspNetCore.Services;
+﻿using DutchTreatAspNetCore.Data;
+using DutchTreatAspNetCore.Services;
 using DutchTreatAspNetCore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,10 +13,12 @@ namespace DutchTreatAspNetCore.Controllers
     public class AppController : Controller
     {
         private readonly IMailService _mailService;
+        private readonly IDutchRepository _rep;
 
-        public AppController(IMailService mailService)
+        public AppController(IMailService mailService, IDutchRepository rep)
         {
             _mailService = mailService;
+            _rep = rep;
         }
 
         public IActionResult Index()
@@ -44,6 +47,14 @@ namespace DutchTreatAspNetCore.Controllers
         {
             return View();
         }
+
+        [HttpGet("shop")]
+        public IActionResult Shop()
+        {
+            var products = _rep.GetAllProducts();            
+            return View(products);
+        }
+
         
     }
 }

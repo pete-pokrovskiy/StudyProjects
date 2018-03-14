@@ -1,5 +1,6 @@
 ﻿using DutchTreatAspNetCore.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,19 +15,41 @@ namespace DutchTreatAspNetCore.Data
     {
         private readonly DutchContext _ctx;
         private readonly IHostingEnvironment _hosting;
+        private readonly UserManager<StoreUser> _userManager;
 
-        public DutchSeeder(DutchContext ctx, IHostingEnvironment hosting)
+        public DutchSeeder(DutchContext ctx, IHostingEnvironment hosting, UserManager<StoreUser> userManager)
         {
             _ctx = ctx;
             _hosting = hosting;
+            _userManager = userManager;
         }
 
-        public void Seed()
+        public async Task Seed()
         {
             _ctx.Database.EnsureCreated();
 
+            var user = await _userManager.FindByEmailAsync("pete@mail.ru");
 
-            if(!_ctx.Products.Any())
+            if(user == null)
+            {
+                user = new StoreUser
+                {
+                    FirstName = "Pete",
+                    LastName = "Pokrovskiy",
+                    UserName = "pete@mail.ru",
+                    Email = "pete@mail.ru"
+                };
+
+                var result = await _userManager.CreateAsync(user, "P@ssw0rd!");
+
+                if(result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Failed to create default user!");
+                }
+                
+            }
+
+            if (!_ctx.Products.Any())
             {
 
                 var filePath = Path.Combine(_hosting.ContentRootPath, "Data/art.json");
@@ -40,6 +63,7 @@ namespace DutchTreatAspNetCore.Data
                 {
                     OrderDate = DateTime.Now,
                     OrderNumber = "12345",
+                    User = user,
                     Items = new List<OrderItem>
                     {
                         new OrderItem

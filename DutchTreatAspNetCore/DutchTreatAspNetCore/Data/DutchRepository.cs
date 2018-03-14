@@ -1,4 +1,5 @@
 ﻿using DutchTreatAspNetCore.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,57 @@ namespace DutchTreatAspNetCore.Data
             _logger = logger;
         }
 
+        public void AddEntity(object model)
+        {
+            _ctx.Add(model);
+        }
+
+        public IEnumerable<Order> GetAllOrders(bool includeItems = true)
+        {
+            if(includeItems)
+            {
+                return _ctx.Orders.Include(o => o.Items)
+                  .ThenInclude(i => i.Product)
+                  .ToList();
+
+            }
+            else
+            {
+                return _ctx.Orders.ToList();
+            }
+        }
+
+        public IEnumerable<Order> GetAllOrdersByUser(string userName, bool includeItems)
+        {
+            if (includeItems)
+            {
+                return _ctx.Orders
+                  .Where(o => o.User.UserName == userName)
+                    .Include(o => o.Items)
+                  .ThenInclude(i => i.Product)
+                  .ToList();
+
+            }
+            else
+            {
+                return _ctx.Orders.Where(o => o.User.UserName == userName).ToList();
+            }
+        }
 
         public IEnumerable<Product> GetAllProducts()
         {
             _logger.LogInformation("Getting all products..");
             return _ctx.Products.OrderBy(p => p.Category).ToList();
+        }
+
+        public Order GetOrderById(string userName, int id)
+        {
+            //return _ctx.Orders.Find(id);
+            return _ctx.Orders
+                .Where(o => o.User.UserName == userName)
+                .Include(o => o.Items)
+                  .ThenInclude(i => i.Product)
+                  .FirstOrDefault(o => o.Id == id);
         }
 
         public IEnumerable<Product> GetProductsByCategory(string category)

@@ -1,6 +1,7 @@
 ﻿using DutchTreatAspNetCore.Data;
 using DutchTreatAspNetCore.Services;
 using DutchTreatAspNetCore.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -49,11 +50,12 @@ namespace DutchTreatAspNetCore.Controllers
         }
 
         [HttpGet("shop")]
+        [Authorize]
         public IActionResult Shop()
         {
-            var products = _rep.GetAllProducts();            
-            return View(products);
+            return View();
         }
+
 
         
     }

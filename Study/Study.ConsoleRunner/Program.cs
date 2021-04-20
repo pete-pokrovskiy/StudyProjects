@@ -13,8 +13,12 @@ namespace Study.Console
         {
             //PlayWithAsyncTask()
 
-            PlayWithXmlDocument();
+            //PlayWithXmlDocument();
 
+            //DateTimeTests.TestDateTimeKind();
+
+            DateTimeTests.GoThroughDateTimeRange();
+            
             System.Console.ReadLine();
 
         }

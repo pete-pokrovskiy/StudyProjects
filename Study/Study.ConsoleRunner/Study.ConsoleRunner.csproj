@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Study.Console</RootNamespace>
-    <AssemblyName>Study.Console</AssemblyName>
+    <AssemblyName>Study.ConsoleRunner</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AsyncTasksTest.cs" />
     <Compile Include="CL.cs" />
+    <Compile Include="DateTimeTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

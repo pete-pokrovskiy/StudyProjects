@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study.Console", "Study.Console\Study.Console.csproj", "{1EBD6992-A96F-41EF-9FA2-943D8A606651}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study.ConsoleRunner", "Study.ConsoleRunner\Study.ConsoleRunner.csproj", "{1EBD6992-A96F-41EF-9FA2-943D8A606651}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study.DataStructures", "Study.DataStructures\Study.DataStructures.csproj", "{EC467DF2-7469-4F07-B7DC-57A2029FA94D}"
 EndProject

@@ -17,17 +17,17 @@ namespace Study.Console
 
             //DateTimeTests.TestDateTimeKind();
 
-            DateTimeTests.GoThroughDateTimeRange();
+            //DateTimeTests.GoThroughDateTimeRange();
             
             System.Console.ReadLine();
 
         }
 
-        static void PlayWithAsyncTask()
+        static async Task PlayWithAsyncTask()
         {
             AsyncTasksTest test = new AsyncTasksTest();
 
-            test.RunTasksInCycle();
+            await test.RunTasksInCycle();
             CL.Log("right after calling RunTasksInCycle");
         }
 

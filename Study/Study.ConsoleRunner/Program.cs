@@ -28,6 +28,7 @@ namespace Study.Console
             AsyncTasksTest test = new AsyncTasksTest();
 
             await test.RunTasksInCycle();
+            
             CL.Log("right after calling RunTasksInCycle");
         }
 

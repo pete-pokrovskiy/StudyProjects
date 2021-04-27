@@ -11,8 +11,11 @@ namespace Study.Console
     {
         public static void Log(string info)
         {
-            if(string.IsNullOrEmpty(info))
+            if (string.IsNullOrEmpty(info))
+            {
                 return;
+            }
+                
 
             System.Console.WriteLine($"[Time = {DateTime.Now}, ThreadId = {Thread.CurrentThread.ManagedThreadId}]");
             System.Console.WriteLine(info);
